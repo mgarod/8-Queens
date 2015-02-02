@@ -13,12 +13,13 @@ Description:	http://en.wikipedia.org/wiki/Eight_queens_puzzle
 
 int main()
 {
-	Board aBoard(10);
+	Board aBoard(8);
 
-	int count = 0;
+	int number_of_arrangements = 0;
 
-	aBoard.calculateArrangements(0, count);
+	aBoard.calculateArrangements(0, number_of_arrangements);
 
-	cout << count << endl;
+	cout << number_of_arrangements << endl;
 
+	return 0;
 }

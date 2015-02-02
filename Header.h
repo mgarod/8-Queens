@@ -19,13 +19,12 @@ class Board
 		Board(const int);
 		void clearBoard();
 		const void printBoard();
-		void calculateArrangements(int current_row, int& count);
+		void calculateArrangements(int, int&);
 
 	private:
 		int rows;
 		int cols; // abbreviation for columns
 		char** gameBoard; // upon Board(int, int), this becomes char[i][j];
-		int num_Queens = rows;	// Max num of Queens to place on NxN board
 
 		// Private Functions
 		void placeQueen(const int, const int);

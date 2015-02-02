@@ -1,5 +1,9 @@
 /*
-	Implementation for class Board
+Author:			Michael Garod
+Created on:		2/1/15
+File:			board.cpp
+Title:			8-Queens
+Description:	Contains implementation for class Board
 */
 
 #include "Header.h"
@@ -37,6 +41,8 @@ void Board::clearBoard()
 	}
 }
 
+//Pre:	n/a
+//Post:	Prints to console the current gameBoard
 const void Board::printBoard()
 {
 	// This formula represents the maximum number of monospaces
@@ -90,20 +96,27 @@ const void Board::printBoard()
 	cout << endl;
 }
 
+//Description:	Method uses backtracking to calculate all valid arrangements.
+//		When a Queen is placed, it is impossible to place another Queen on
+//		the same row, therefore skip immediately to the next row.
+//Pre:	First use assumes current_row to be 0, and count to be 0.
+//Post:	gameBoard will contain whatever the final found
+//		arragement was when recursion ended.
 void Board::calculateArrangements(int current_row, int& count)
 {
 	for (int j = 0; j < cols; j++)
 	{
 		if ( checkDeadZone(current_row, j) && (current_row == (rows-1)) )
-		{
+		{	// Place last Queen, print, count, backtrack
 			placeQueen(current_row, j);
 			printBoard();
 			count++;
 			removeQueen(current_row, j);
 		}
 		else if ( checkDeadZone(current_row, j) )
-		{
+		{	// Place Queen, skip to next row, recur, backtrack
 			placeQueen(current_row, j);
+			// No 2 queens can be in the same row, so just skip to next row
 			calculateArrangements(current_row + 1, count);
 			removeQueen(current_row, j);
 		}
@@ -111,11 +124,14 @@ void Board::calculateArrangements(int current_row, int& count)
 }
 
 /*** Private Functions ***/
+
+// Used only by calculateArrangements();
 void Board::placeQueen(const int i, const int j)
 {
 	gameBoard[i][j] = 'Q';
 }
 
+// Used only by calculateArrangements();
 void Board::removeQueen(const int i, const int j)
 {
 	gameBoard[i][j] = ' ';
@@ -131,13 +147,14 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 	int i = Q_row;
 	int j = Q_col;
 
-	// If the space is occupied with 'Q', do not place Queen
+	// If the space is occupied with anything, do not place Queen
 	if (gameBoard[i][j] != ' ')
 	{
 		return false;
 	}
 
-	// Up
+	// Up is calculated ASAP to increase efficiency
+	//because no 2 queens can be in the same column
 	while (i > 0)
 	{
 		i--;
@@ -157,7 +174,7 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 		if (gameBoard[i][j] == 'Q')
 		{
 			return false;
-		}
+	}
 	}
 
 	i = Q_row; j = Q_col; // Reset to Queen's Position
