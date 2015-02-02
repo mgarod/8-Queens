@@ -10,9 +10,12 @@ Description:	http://en.wikipedia.org/wiki/Eight_queens_puzzle
 */
 
 #include "Header.h"
+#include <ctime>
 
 int main()
 {
+	unsigned long start_time = time(NULL);
+
 	Board aBoard(8);
 
 	int number_of_arrangements = 0;
@@ -20,6 +23,9 @@ int main()
 	aBoard.calculateArrangements(0, number_of_arrangements);
 
 	cout << number_of_arrangements << endl;
+
+	// Displays seconds elapsed since start
+	cout << time(NULL) - start_time << endl;
 
 	return 0;
 }
