@@ -154,7 +154,7 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 	}
 
 	// Up is calculated ASAP to increase efficiency
-	//because no 2 queens can be in the same column
+	// because no 2 queens can be in the same column
 	while (i > 0)
 	{
 		i--;
