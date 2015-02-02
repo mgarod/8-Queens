@@ -162,7 +162,6 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 		{
 			return false;
 		}
-			
 	}
 
 	i = Q_row; j = Q_col; // Reset to Queen's Position
@@ -174,7 +173,7 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 		if (gameBoard[i][j] == 'Q')
 		{
 			return false;
-	}
+		}
 	}
 
 	i = Q_row; j = Q_col; // Reset to Queen's Position
