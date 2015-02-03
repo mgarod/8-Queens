@@ -166,6 +166,34 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 
 	i = Q_row; j = Q_col; // Reset to Queen's Position
 
+	// Up & Left
+	while (i > 0 && j > 0)
+	{
+		i--;
+		j--;
+		if (gameBoard[i][j] == 'Q')
+		{
+			return false;
+		}
+	}
+
+	i = Q_row; j = Q_col; // Reset to Queen's Position
+
+	// Up & Right
+	while (i > 0 && j < cols - 1)
+	{
+		i--;
+		j++;
+		if (gameBoard[i][j] == 'Q')
+		{
+			return false;
+		}
+	}
+
+	i = Q_row; j = Q_col; // Reset to Queen's Position
+
+	/*		Checking for collisions that are impossible
+
 	// Down
 	while (i < rows - 1)
 	{
@@ -202,31 +230,6 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 
 	i = Q_row; j = Q_col; // Reset to Queen's Position
 
-	// Up & Left
-	while (i > 0 && j > 0)
-	{
-		i--;
-		j--;
-		if (gameBoard[i][j] == 'Q')
-		{
-			return false;
-		}
-	}
-
-	i = Q_row; j = Q_col; // Reset to Queen's Position
-
-	// Up & Right
-	while (i > 0 && j < cols - 1)
-	{
-		i--;
-		j++;
-		if (gameBoard[i][j] == 'Q')
-		{
-			return false;
-		}
-	}
-
-	i = Q_row; j = Q_col; // Reset to Queen's Position
 
 	// Down & Left
 	while (i < rows - 1 && j > 0)
@@ -251,7 +254,8 @@ bool Board::checkDeadZone(const int Q_row, const int Q_col)
 			return false;
 		}
 	}
-	
+	*/
+
 	// If no collision found, then it is safe to place the queen at (i,j)
 	return true;
 }

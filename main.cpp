@@ -16,7 +16,7 @@ int main()
 {
 	unsigned long start_time = time(NULL);
 
-	Board aBoard(8);
+	Board aBoard(14);
 
 	int number_of_arrangements = 0;
 
