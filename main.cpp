@@ -11,12 +11,15 @@ Description:	http://en.wikipedia.org/wiki/Eight_queens_puzzle
 
 #include "Header.h"
 #include <ctime>
+#include <fstream>
 
 int main()
 {
 	unsigned long start_time = time(NULL);
 
-	Board aBoard(14);
+	int number = 6;
+
+	Board aBoard(number);
 
 	int number_of_arrangements = 0;
 
@@ -26,6 +29,13 @@ int main()
 
 	// Displays seconds elapsed since start
 	cout << time(NULL) - start_time << endl;
+
+	unsigned long run_time = time(NULL) - start_time;
+
+	ofstream file("results.txt");
+
+	file << "Run Time for " << number <<
+		" Queens: " << run_time;
 
 	return 0;
 }

@@ -1,0 +1,1 @@
+Run Time for 6 Queens: 0
